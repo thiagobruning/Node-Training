@@ -1,0 +1,23 @@
+const { deepEqual, ok } = require('assert')
+const database = require('./database')
+
+const DEFAULT_HERO = {
+    id: 1,
+    name: 'Flash',
+    power: 'Speed'
+}
+
+describe('Suite de manipulação de Herois', () => {
+    it('Pesquisar herois utilizando arquivos', async () =>{
+        const expected = DEFAULT_HERO
+        
+        // entre colchetes trás apenas a primeira posição
+        const [resultado] = await database.listar(expected.id) 
+        deepEqual(resultado, expected)
+    })
+    
+    // it('Deve cadastrar um heroi usando arquivos', async () => {
+    //     const expected = DEFAULT_HERO
+    //     ok(null, expected)
+    // })
+})
