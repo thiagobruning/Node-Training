@@ -8,12 +8,14 @@ class Postgres extends ICrud {
         this._driver = null
         this._herois = null
     }
-    
-    async create(item) 
-    {
+
+    create = async (item) => {
         const { dataValues } = await this._herois.create(item)
         return dataValues
     }
+
+    read = async (item = {})  => this._herois.findAll({where: item, raw: true});
+    
 
     isConnected = async () =>{
         try {
